@@ -1,0 +1,34 @@
+{
+  "version": 3,
+  "builds": [
+    {
+      "src": "client/index.js", // Entry point for client build
+      "use": "@vercel/react", // Use Vercel's React builder
+      "config": {
+        "env": {
+          // Add any environment variables used in your frontend (if needed)
+        }
+      }
+    },
+    {
+      "src": "app.js", // Entry point for server build
+      "use": "@vercel/node", // Use Vercel's Node.js builder
+      "config": {
+        "env": {
+          // Add any environment variables used in your backend (if needed)
+        }
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)", // Match all routes
+      "dest": "client/build/index.html" // Serve frontend for all routes
+    }
+  ],
+  "env": { // Optional: Set environment variables globally for both builds
+    "NODE_ENV": "production" // Set this to "production" for deployment
+  }
+}
+
+}
